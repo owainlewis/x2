@@ -2,5 +2,5 @@ package agent
 
 type Action interface {
 	Matches(input string) bool
-	Perform()
+	Perform(agent *Agent)
 }

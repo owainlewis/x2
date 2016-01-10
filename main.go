@@ -1,20 +1,21 @@
 package main
 
 import (
-	"fmt"
 	"github.com/owainlewis/x2/agent"
 	"github.com/owainlewis/x2/modules"
+	"github.com/owainlewis/x2/responders"
 )
 
 func main() {
 
 	ping := modules.Ping{}
+	responder := responders.Console{}
 
 	bot := agent.New()
 	bot.SetName("owain")
 	bot.AddAction(ping)
-	fmt.Println(bot.Name)
+	bot.SetResponder(responder)
 
-	bot.Act("ping")
-
+	bot.Tell("Hello. What is your name?")
+	bot.Tell("ping")
 }

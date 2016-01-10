@@ -1,4 +1,6 @@
 package agent
 
-type Memory struct {
+type Memory interface {
+	Set(k string, v string)
+	Get(k string)
 }
