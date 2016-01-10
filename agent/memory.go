@@ -1,4 +1,4 @@
-package x2
+package agent
 
 type Memory struct {
 }
