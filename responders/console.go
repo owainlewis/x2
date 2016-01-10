@@ -17,5 +17,5 @@ func (responder Console) Ask(question string) string {
 }
 
 func (responder Console) Tell(input string) {
-	println(">> " + input)
+	fmt.Println(input)
 }

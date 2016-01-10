@@ -1,12 +1,15 @@
 package modules
 
-import "github.com/owainlewis/x2/agent"
+import (
+	"github.com/owainlewis/x2/agent"
+	"strings"
+)
 
 type Ping struct {
 }
 
 func (ping Ping) Matches(input string) bool {
-	return input == "ping"
+	return strings.Contains(input, "ping")
 }
 
 func (ping Ping) Perform(agent *agent.Agent) {
