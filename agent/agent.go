@@ -1,5 +1,7 @@
 package agent
 
+import "log"
+
 type AgentQuery struct {
 	Ask string
 }
@@ -45,6 +47,9 @@ func (agent *Agent) Reply(what string) AgentReply {
 }
 
 func (agent *Agent) Query(query AgentQuery) AgentReply {
+
+	log.Println("Agent query : " + query.Ask)
+
 	// Linear search over actions
 	if query.Ask == "" {
 		return agent.Reply("Your query was empty")
