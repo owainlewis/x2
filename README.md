@@ -3,7 +3,7 @@
 A customisable, voice activated intelligent agent for automating tasks. 
 X2 can perform complex actions and store information for you.
 
-X2 comes with a voice activated web interface. 
+X2 comes with a voice activated web interface. Your agent comes with a simple memory (which can be expanded) and a basic notion of self identity. 
 
 You can deploy X2 on any Linux server. You might want to use it to automate tasks. For example:
 
