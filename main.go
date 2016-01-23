@@ -1,37 +1,45 @@
 package main
 
 import (
-	"bufio"
+	"encoding/json"
 	"fmt"
 	"github.com/owainlewis/x2/agent"
-	"github.com/owainlewis/x2/modules"
-	"github.com/owainlewis/x2/persist"
-	"github.com/owainlewis/x2/responders"
-	"os"
+	"log"
+	"net/http"
 )
 
-func loop(bot *agent.Agent) {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(">> How can I help?: ")
-	input, _ := reader.ReadString('\n')
-	bot.Tell(input)
-	loop(bot)
+var emily = agent.New()
+
+func agentRequestHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		decoder := json.NewDecoder(r.Body)
+		query := agent.AgentQuery{}
+		err := decoder.Decode(&query)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+		}
+		reply := emily.Query(query)
+		fmt.Fprintf(w, reply.Tell)
+	} else {
+		w.WriteHeader(http.StatusNotFound)
+	}
+}
+
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		http.ServeFile(w, r, "static/index.html")
+	} else {
+		w.WriteHeader(http.StatusNotFound)
+	}
 }
 
 func main() {
-	ping := modules.Ping{}
-	responder := responders.Console{}
-	memory := persist.Transient{}
 
-	bot := agent.New()
-	bot.SetName("Emily")
-	bot.SetActions(ping)
-	bot.SetResponder(responder)
-	bot.SetMemory(memory)
+	staticFileServer := http.FileServer(http.Dir("static"))
+	http.Handle("/static", staticFileServer)
+	http.HandleFunc("/agent", agentRequestHandler)
+	http.HandleFunc("/", indexHandler)
 
-	bot.Tell("ping")
-
-	bot.Remember("My name", "owain")
-
-	bot.Recall("My name")
+	log.Println("Starting agent...")
+	log.Fatal(http.ListenAndServe(":3000", nil))
 }
