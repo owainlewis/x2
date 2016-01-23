@@ -1,6 +1,7 @@
 # X2
 
-A customizable intelligent agent for automating tasks. X2 can perform complex actions and store information for you.
+A customisable, voice activated intelligent agent for automating tasks. 
+X2 can perform complex actions and store information for you.
 
 X2 comes with a voice activated web interface. 
 
