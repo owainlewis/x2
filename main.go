@@ -4,11 +4,21 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/owainlewis/x2/agent"
+	"github.com/owainlewis/x2/modules"
 	"log"
 	"net/http"
 )
 
-var emily = agent.New()
+func buildAgent() *agent.Agent {
+	emily := agent.New()
+	emily.SetName("Emily")
+
+	ping := modules.Ping{}
+	emily.SetActions(ping)
+	return emily
+}
+
+var emily = buildAgent()
 
 func agentRequestHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
