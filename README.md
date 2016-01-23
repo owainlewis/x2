@@ -7,6 +7,7 @@ X2 comes with a voice activated web interface.
 You can deploy X2 on any Linux server. You might want to use it to automate tasks. For example:
 
 > You: Deploy the user service to producton
+
 > X2: Ok. Deploying the user service to production now.
 
 ## Creating custom modules
