@@ -2,10 +2,61 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>A static page</title>
-    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>X2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <style>
+      body { color: #555; }
+      .container {
+          font-size: 48px;
+          font-weight: bold;
+          text-align: center;
+          div { margin-top: 40%; }      
+      }
+      #x2 { padding: 220px 0; }
+    </style>
   </head>
   <body>
-    <h1>Hello from a static page</h1>
+    <div class="container">
+        <div id="x2">Hello. I am X2. Ask me a question</div>
+    </div>    
+    <script>      
+
+      function update(value) {
+          var element = document.getElementById("x2");
+          element.innerHTML = value;
+      }
+
+      var recognition = new webkitSpeechRecognition();
+      recognition.lang = "en-GB";
+      recognition.continuous = true;
+      recognition.interimResults = true;      
+    
+      recognition.onresult = function(event) {
+
+          var interim_transcript = '';
+
+          for (var i = event.resultIndex; i < event.results.length; ++i) {
+              if (event.results[i].isFinal) {
+                  var transcript = event.results[i][0].transcript;
+
+console.log("You asked " + transcript);
+
+$.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: '/agent',
+      data: JSON.stringify({ ask: transcript.toLowerCase().trim() }),
+      complete: function(data) { 
+          update(data.responseText);
+      }
+});
+      
+              } 
+          }
+      }
+      recognition.start();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
   </body>
   </html>

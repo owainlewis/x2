@@ -13,7 +13,7 @@ func buildAgent() *agent.Agent {
 	emily := agent.New()
 	emily.SetName("Emily")
 
-	emily.SetActions(modules.Ping{}, modules.Time{})
+	emily.SetActions(modules.Ping{}, modules.Time{}, modules.Mood{})
 	return emily
 }
 
@@ -43,12 +43,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
-	staticFileServer := http.FileServer(http.Dir("static"))
-	http.Handle("/static", staticFileServer)
 	http.HandleFunc("/agent", agentRequestHandler)
 	http.HandleFunc("/", indexHandler)
 
-	log.Println("Starting agent...")
+	log.Println("Starting agent. Listening on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }

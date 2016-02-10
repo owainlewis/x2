@@ -9,7 +9,7 @@ type Ping struct {
 }
 
 func (ping Ping) Matches(input string) bool {
-	return strings.Contains(input, "ping") || strings.Contains(input, "PING")
+	return strings.Contains(input, "ping")
 }
 
 func (ping Ping) Perform(agent *agent.Agent) agent.AgentReply {

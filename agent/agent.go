@@ -1,6 +1,9 @@
 package agent
 
-import "log"
+import (
+	"log"
+	"strings"
+)
 
 type AgentQuery struct {
 	Ask string
@@ -55,13 +58,13 @@ func (agent *Agent) Query(query AgentQuery) AgentReply {
 		return agent.Reply("Your query was empty")
 	}
 	for _, action := range agent.Actions {
-		if action.Matches(query.Ask) {
+		if action.Matches(strings.ToLower(query.Ask)) {
 			// an action needs a reference to the underlying agent
 			// this is needed to query agent memory or identity
 			return action.Perform(agent)
 		}
 	}
-	return agent.Reply("Sorry. I don't understand")
+	return agent.Reply("Sorry. I don't understand " + query.Ask)
 }
 
 func New() *Agent {

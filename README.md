@@ -1,5 +1,7 @@
 # X2
 
+An in browser AI that can understand your voice and perform actions based on your commands.
+
 A customisable, voice activated intelligent agent for automating tasks. 
 X2 can perform complex actions and store information for you.
 
