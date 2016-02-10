@@ -21,7 +21,7 @@
         <div id="x2">Hello. I am X2. Ask me a question</div>
     </div>    
     <script>      
-
+      // Move me to somewhere more sensible! :)
       function update(value) {
           var element = document.getElementById("x2");
           element.innerHTML = value;
@@ -33,25 +33,19 @@
       recognition.interimResults = true;      
     
       recognition.onresult = function(event) {
-
-          var interim_transcript = '';
-
           for (var i = event.resultIndex; i < event.results.length; ++i) {
               if (event.results[i].isFinal) {
                   var transcript = event.results[i][0].transcript;
-
-console.log("You asked " + transcript);
-
-$.ajax({
-      type: "POST",
-      contentType: "application/json",
-      url: '/agent',
-      data: JSON.stringify({ ask: transcript.toLowerCase().trim() }),
-      complete: function(data) { 
-          update(data.responseText);
-      }
-});
-      
+                  console.log("You asked " + transcript);
+                  $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: '/agent',
+                        data: JSON.stringify({ ask: transcript.toLowerCase().trim() }),
+                        complete: function(data) { 
+                            update(data.responseText);
+                        }
+                  });
               } 
           }
       }
