@@ -2,7 +2,10 @@
 
 An in browser AI that can understand your voice and perform actions based on your commands.
 
+![](https://raw.githubusercontent.com/owainlewis/x2/master/static/preview.png)
+
 A customisable, voice activated intelligent agent for automating tasks. 
+
 X2 can perform complex actions and store information for you.
 
 X2 comes with a voice activated web interface, a simple memory (which can be expanded) and a basic notion of self identity. 
@@ -35,7 +38,7 @@ type Time struct {
 }
 
 func (t Time) Matches(input string) bool {
-	return strings.Contains(input, "What time is it") || strings.Contains(input, "What is the time")
+	return strings.Contains(input, "what time is it") || strings.Contains(input, "what is the time")
 }
 
 func (t Time) Perform(agent *agent.Agent) agent.AgentReply {
