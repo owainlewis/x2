@@ -1,4 +1,4 @@
-# X2
+# X2 (Work in Progress)
 
 An in browser AI that can understand your voice and perform actions based on your commands.
 
@@ -7,13 +7,11 @@ An in browser AI that can understand your voice and perform actions based on you
 A customisable, voice activated intelligent agent for automating tasks. 
 
 X2 can perform complex actions and store information for you.
-
 X2 comes with a voice activated web interface, a simple memory (which can be expanded) and a basic notion of self identity. 
 
 You can deploy X2 on any Linux server. You might want to use it to automate tasks. For example:
 
 > You: Deploy the user service to producton
-
 > X2: Ok. Deploying the user service to production now.
 
 ## Creating custom modules
