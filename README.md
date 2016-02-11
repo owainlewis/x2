@@ -51,5 +51,6 @@ After creating a module you need to add add it to your agent
 
 ```go
 emily := agent.New()
-emily.SetActions(modules.Ping{}, modules.Time{})
+emily.SetActions(modules.Ping{}, modules.Time{}, modules.Weather{})
+emily.Query("What is the weather like in San Francisco?")
 ```
