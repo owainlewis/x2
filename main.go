@@ -13,7 +13,7 @@ func buildAgent() *agent.Agent {
 	emily := agent.New()
 	emily.SetName("Emily")
 
-	emily.SetActions(modules.Ping{}, modules.Time{}, modules.Mood{})
+	emily.SetActions(modules.Ping{}, modules.Time{}, modules.Mood{}, modules.Weather{})
 	return emily
 }
 
