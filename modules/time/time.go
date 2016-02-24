@@ -2,7 +2,7 @@ package time
 
 import (
 	"github.com/owainlewis/x2/agent"
-	"strings"
+	"regexp"
 	"time"
 )
 
@@ -10,7 +10,8 @@ type Time struct {
 }
 
 func (t Time) Matches(input string) bool {
-	return strings.Contains(input, "what time is it") || strings.Contains(input, "what is the time")
+	var expr = regexp.MustCompile(`time`)
+	return expr.MatchString(input)
 }
 
 func (t Time) Perform(agent *agent.Agent) agent.AgentReply {

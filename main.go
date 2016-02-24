@@ -6,6 +6,7 @@ import (
 	"github.com/owainlewis/x2/agent"
 	"github.com/owainlewis/x2/modules"
 	"github.com/owainlewis/x2/modules/self"
+	"github.com/owainlewis/x2/modules/time"
 	"github.com/owainlewis/x2/modules/weather"
 	"log"
 	"net/http"
@@ -15,7 +16,7 @@ func buildAgent() *agent.Agent {
 	emily := agent.New()
 	emily.SetName("Emily")
 
-	emily.SetActions(modules.Ping{}, weather.Weather{}, self.Self{})
+	emily.SetActions(modules.Ping{}, weather.Weather{}, self.Self{}, time.Time{})
 	return emily
 }
 
