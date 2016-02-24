@@ -20,7 +20,7 @@ func feeling(input string) bool {
 	return expr.MatchString(input)
 }
 
-func (chat Self) Matches(input string) bool {
+func (self Self) Matches(input string) bool {
 	if greeting(input) {
 		return true
 	}
@@ -30,7 +30,7 @@ func (chat Self) Matches(input string) bool {
 	return false
 }
 
-func (chat Self) Perform(agent *agent.Agent) agent.AgentReply {
+func (self Self) Perform(agent *agent.Agent) agent.AgentReply {
 	if greeting(agent.LastQuery.Ask) {
 		return agent.Reply("Hi. My name is " + agent.Name)
 	}
