@@ -67,7 +67,7 @@ func (agent *Agent) Query(query AgentQuery) AgentReply {
 			return action.Perform(agent)
 		}
 	}
-	return agent.Reply("Sorry. I don't understand " + query.Ask)
+	return agent.Reply("Sorry. I don't understand '" + query.Ask + "'")
 }
 
 func New() *Agent {
