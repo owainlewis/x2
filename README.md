@@ -2,7 +2,9 @@
 
 An in browser AI that can understand your voice and perform actions based on your commands.
 
-[![](https://i.vimeocdn.com/video/555521229.webp?mw=900&mh=575)](https://vimeo.com/154906249 "Speech AI Demo")
+![](
+
+[![](https://raw.githubusercontent.com/owainlewis/x2/master/static/preview2.png)](https://vimeo.com/154906249 "Speech AI Demo")
 
 A customisable, voice activated intelligent agent for automating tasks. 
 
