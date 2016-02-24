@@ -1,4 +1,4 @@
-package modules
+package time
 
 import (
 	"github.com/owainlewis/x2/agent"
@@ -10,8 +10,7 @@ type Time struct {
 }
 
 func (t Time) Matches(input string) bool {
-	return strings.Contains(input, "what time is it") ||
-		strings.Contains(input, "what is the time")
+	return strings.Contains(input, "what time is it") || strings.Contains(input, "what is the time")
 }
 
 func (t Time) Perform(agent *agent.Agent) agent.AgentReply {

@@ -1,4 +1,4 @@
-package modules
+package weather
 
 import (
 	"github.com/owainlewis/x2/agent"

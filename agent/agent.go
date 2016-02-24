@@ -21,8 +21,9 @@ type Action interface {
 }
 
 type Agent struct {
-	Name    string
-	Actions []Action
+	Name      string
+	Actions   []Action
+	LastQuery AgentQuery // stores the last question the agent was asked
 }
 
 func (agent *Agent) SetName(name string) {
@@ -52,6 +53,8 @@ func (agent *Agent) Reply(what string) AgentReply {
 func (agent *Agent) Query(query AgentQuery) AgentReply {
 
 	log.Println("Agent query : " + query.Ask)
+
+	agent.LastQuery = query
 
 	// Linear search over actions
 	if query.Ask == "" {
