@@ -27,6 +27,11 @@
           element.innerHTML = value;
       }
 
+      function say(what) {
+          var msg = new SpeechSynthesisUtterance(what);
+          window.speechSynthesis.speak(msg);
+      }
+
       var recognition = new webkitSpeechRecognition();
       recognition.lang = "en-GB";
       recognition.continuous = true;
@@ -42,9 +47,10 @@
                         contentType: "application/json",
                         url: '/agent',
                         data: JSON.stringify({ ask: transcript.toLowerCase().trim() }),
-                        complete: function(data) { 
+                        complete: function(data) {
+
                             update(data.responseText);
-                        }
+                       }
                   });
               } 
           }
