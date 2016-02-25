@@ -10,6 +10,7 @@ import (
 	"github.com/owainlewis/x2/modules/weather"
 	"log"
 	"net/http"
+	"os"
 )
 
 func buildAgent() *agent.Agent {
@@ -46,9 +47,15 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	http.HandleFunc("/agent", agentRequestHandler)
 	http.HandleFunc("/", indexHandler)
 
-	log.Println("Starting agent. Listening on port 3000")
-	log.Fatal(http.ListenAndServe(":3000", nil))
+	log.Println("Starting agent. Listening on port " + port)
+	log.Fatal(http.ListenAndServe(":"+string(port), nil))
 }
