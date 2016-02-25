@@ -1,8 +1,8 @@
-# X2 (Work in Progress)
+# X2
 
 An in browser AI that can understand your voice and perform actions based on your commands.
 
-![](
+https://x2ai.herokuapp.com/
 
 [![](https://raw.githubusercontent.com/owainlewis/x2/master/static/preview2.png)](https://vimeo.com/154906249 "Speech AI Demo")
 
@@ -15,6 +15,13 @@ You can deploy X2 on any Linux server. You might want to use it to automate task
 
 > You: Deploy the user service to producton
 > X2: Ok. Deploying the user service to production now.
+
+## Deploying your X2 agent to Heroku
+
+```
+heroku create
+git push heroku master
+```
 
 ## Creating custom modules
 
